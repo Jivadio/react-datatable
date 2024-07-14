@@ -164,10 +164,10 @@ const action = {
 
 ```javascript
 <DataTable
-  title="Library Inventory"
-  items={items}
-  headers={headers}
-  action={action}
-  paginateOptions={[5, 10, 15]}
+  listTitle="Library Inventory"
+  dataItems={items}
+  columnHeaders={headers}
+  actionOptions={action}
+  paginationOptions={[5, 10, 15]}
 />
 ```
