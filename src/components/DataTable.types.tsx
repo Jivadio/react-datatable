@@ -1,7 +1,10 @@
 export interface PaginatedListProps {
     listTitle: string;
     dataItems: Array<DataItemProps>;
-    columnHeaders: Array<{ headerTitle: string; sortKey: string }>;
+    columnHeaders: Array<{
+        title: string;
+        sortText: string;
+        headerTitle: string; sortKey: string }>;
     actionOptions?: {
         actionTitle: string | undefined;
         actionHandler: ((id: string) => void) | undefined;
@@ -25,6 +28,7 @@ export interface DataRowProps {
     columnHeaders: Array<{
         headerTitle: string;
         sortKey: string;
+        sortText: string;
     }>;
     actionOptions: {
         actionTitle: string | undefined;

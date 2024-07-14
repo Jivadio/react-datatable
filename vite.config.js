@@ -30,9 +30,9 @@ export default defineConfig(function (configEnv) { return ({
     build: {
         lib: {
             entry: resolve('src', 'components/index.ts'),
-            name: 'ReactDataTableComponent',
+            name: 'ReactDataTable',
             formats: ['es', 'umd'],
-            fileName: function (format) { return "react-datatable-component.".concat(format, ".js"); },
+            fileName: function (format) { return "react-datatable.".concat(format, ".js"); },
         },
         rollupOptions: {
             external: __spreadArray([], Object.keys(packageJson.peerDependencies), true),
