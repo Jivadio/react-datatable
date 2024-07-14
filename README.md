@@ -20,11 +20,11 @@ Use it as a standard React component:
 
 ```javascript
 <DataTable
-  title="Library Inventory"
-  items={items}
-  headers={headers}
-  action={action}
-  paginateOptions={[5, 10, 15]}
+  listTitle="Library Inventory"
+  dataItems={items}
+  columnHeaders={headers}
+  actionOptions={action}
+  paginationOptions={[5, 10, 15]}
 />
 ```
 
@@ -34,16 +34,16 @@ Use it as a standard React component:
 
 The `DataTable` component can accept up to 5 arguments:
 
-- **title**: A string displayed at the top of the table.
-- **items**: An array of objects representing the items to display. Each object must have an `id` property (string). Other properties can be strings or numbers.
-- **headers**: An array of objects defining the columns. Each object should have:
+- **listTitle**: A string displayed at the top of the table.
+- **dataItems**: An array of objects representing the items to display. Each object must have an `id` property (string). Other properties can be strings or numbers.
+- **columnHeaders**: An array of objects defining the columns. Each object should have:
   - **title**: The column header title.
   - **sortText**: The property name in the item object for sorting and filtering.
-- **action** (Optional): An object defining the action column. It includes:
+- **actionOptions** (Optional): An object defining the action column. It includes:
   - **title**: The action column header title.
   - **function**: A function executed when the action button is clicked. Receives the item's `id` as a parameter.
   - **label**: The label for the action buttons.
-- **paginateOptions** (Optional): An array of numbers defining the options for the number of items per page. Defaults to [5, 10, 15]. If the values exceed the total items, they will not be displayed.
+- **paginationOptions** (Optional): An array of numbers defining the options for the number of items per page. Defaults to [5, 10, 15]. If the values exceed the total items, they will not be displayed.
 
 ### Functionality
 
