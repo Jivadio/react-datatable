@@ -1,30 +1,173 @@
-# React + TypeScript + Vite
+# react-paginated-table
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+`@jivadio/react-datatable` is an npm package designed to seamlessly integrate paginated, filtered, and sortable tables into your web applications. Built with React, TypeScript, and TailwindCSS, it offers a robust solution for table management.
 
-Currently, two official plugins are available:
+## Installation
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Install the package using npm:
 
-## Expanding the ESLint configuration
+```bash
+npm install @jivadio/react-datatable
+```
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+Import the table component into your project:
 
-- Configure the top-level `parserOptions` property like this:
+```javascript
+import Datatable from "@jivadio/react-datatable";
+```
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
+Use it as a standard React component:
+
+```javascript
+<DataTable
+  title="Library Inventory"
+  items={items}
+  headers={headers}
+  action={action}
+  paginateOptions={[5, 10, 15]}
+/>
+```
+
+## Usage
+
+### Arguments
+
+The `DataTable` component can accept up to 5 arguments:
+
+- **title**: A string displayed at the top of the table.
+- **items**: An array of objects representing the items to display. Each object must have an `id` property (string). Other properties can be strings or numbers.
+- **headers**: An array of objects defining the columns. Each object should have:
+  - **title**: The column header title.
+  - **sortText**: The property name in the item object for sorting and filtering.
+- **action** (Optional): An object defining the action column. It includes:
+  - **title**: The action column header title.
+  - **function**: A function executed when the action button is clicked. Receives the item's `id` as a parameter.
+  - **label**: The label for the action buttons.
+- **paginateOptions** (Optional): An array of numbers defining the options for the number of items per page. Defaults to [5, 10, 15]. If the values exceed the total items, they will not be displayed.
+
+### Functionality
+
+- Items can be sorted by any provided header field in ascending or descending order. By default, items are sorted in ascending order based on the first provided header field.
+- Items can be filtered using a text input, which searches across all item fields.
+
+See the example below for more details.
+
+## Example
+
+An example with the following parameters:
+
+1. **items**
+
+```javascript
+const items = [
+  {
+    id: "1",
+    title: "JavaScript: The Good Parts",
+    author: "Douglas Crockford",
+    genre: "Programming",
+    pages: 176,
+    price: 25.99,
+    stock: 50,
   },
+  {
+    id: "2",
+    title: "Eloquent JavaScript",
+    author: "Marijn Haverbeke",
+    genre: "Programming",
+    pages: 472,
+    price: 29.99,
+    stock: 35,
+  },
+  {
+    id: "3",
+    title: "JavaScript: The Definitive Guide",
+    author: "David Flanagan",
+    genre: "Programming",
+    pages: 1096,
+    price: 39.99,
+    stock: 20,
+  },
+  {
+    id: "4",
+    title: "You Don't Know JS",
+    author: "Kyle Simpson",
+    genre: "Programming",
+    pages: 260,
+    price: 24.99,
+    stock: 45,
+  },
+  {
+    id: "5",
+    title: "Learning React",
+    author: "Alex Banks & Eve Porcello",
+    genre: "Programming",
+    pages: 350,
+    price: 31.99,
+    stock: 30,
+  },
+  {
+    id: "6",
+    title: "JavaScript and JQuery",
+    author: "Jon Duckett",
+    genre: "Programming",
+    pages: 640,
+    price: 35.99,
+    stock: 25,
+  },
+];
+```
+
+2. **headers**
+
+```javascript
+const headers = [
+  {
+    title: "Title",
+    sortText: "title",
+  },
+  {
+    title: "Author",
+    sortText: "author",
+  },
+  {
+    title: "Genre",
+    sortText: "genre",
+  },
+  {
+    title: "Pages",
+    sortText: "pages",
+  },
+  {
+    title: "Price",
+    sortText: "price",
+  },
+  {
+    title: "Stock",
+    sortText: "stock",
+  },
+];
+```
+
+3. **action**
+
+```javascript
+const action = {
+  title: "Action",
+  function: (id: string) => {
+    console.log("Book ID: " + id);
+  },
+  label: "View Details",
 }
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+4. **Component**
+
+```javascript
+<DataTable
+  title="Library Inventory"
+  items={items}
+  headers={headers}
+  action={action}
+  paginateOptions={[5, 10, 15]}
+/>
+```
