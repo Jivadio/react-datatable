@@ -13,7 +13,7 @@ npm install @jivadio/react-datatable
 Import the table component into your project:
 
 ```javascript
-import Datatable from "@jivadio/react-datatable";
+import DataTable from "@jivadio/react-datatable";
 ```
 
 Use it as a standard React component:
@@ -153,7 +153,7 @@ const headers = [
 ```javascript
 const action = {
   title: "Action",
-  function: (id: string) => {
+  function: (id) => {
     console.log("Book ID: " + id);
   },
   label: "View Details",
