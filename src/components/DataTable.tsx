@@ -11,6 +11,18 @@ import {
   FilterSortParams,
 } from "./DataTable.types";
 
+/**
+ * DataTable Component
+ * @param {Object} props - Properties passed to the component
+ * @param {string} props.listTitle - Title of the data table
+ * @param {Array} props.dataItems - Array of data items to be displayed
+ * @param {Object} [props.actionOptions] - Options for actions on each row
+ * @param {string} [props.actionOptions.actionTitle] - Title for the action column
+ * @param {function} [props.actionOptions.actionHandler] - Handler function for the action
+ * @param {string} [props.actionOptions.buttonLabel] - Label for the action button
+ * @param {Array} props.columnHeaders - Array of column headers for the table
+ * @param {Array} [props.paginationOptions=[5, 10, 15]] - Array of pagination options
+ */
 export default function DataTable({
                                     listTitle,
                                     dataItems,
@@ -48,6 +60,11 @@ export default function DataTable({
     (paginationParams.currentPage + 1) * paginationParams.perPage
   );
 
+  /**
+   * Handles pagination of data items
+   * @param {number} perPage - Number of items per page
+   * @param {number} page - Current page number
+   */
   const paginate = useCallback(
     (perPage: number, page: number) => {
       const itemsAfterPagination = filteredDataItems.slice(
@@ -60,6 +77,10 @@ export default function DataTable({
     [filteredDataItems]
   );
 
+  /**
+   * Handles filtering of data items
+   * @param {string} value - Search query
+   */
   function handleFilter(value: string) {
     const filterFields = columnHeaders.map(header => header.sortText);
     const result = filterItems(allDataItems, value, filterFields);
@@ -67,6 +88,11 @@ export default function DataTable({
     setFilteredDataItems(result);
   }
 
+  /**
+   * Handles sorting of data items
+   * @param {string} order - Sort order ('asc' or 'desc')
+   * @param {string} field - Field to sort by
+   */
   function handleSort(order: "asc" | "desc", field: string) {
     const sortedItems = sortItems([...filteredDataItems], field, order);
 

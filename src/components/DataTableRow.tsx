@@ -1,5 +1,15 @@
-import { DataRowProps } from "./DataTable.types"
+import { DataRowProps } from "./DataTable.types";
 
+/**
+ * DataTableRow Component
+ * @param {Object} props - Properties passed to the component
+ * @param {DataItemProps} props.dataItem - The data item to be displayed in the row.
+ * @param {Array<{headerTitle: string; sortKey: string; sortText: string;}>} props.columnHeaders - The column headers for the table.
+ * @param {Object} props.actionOptions - The options for actions on each row.
+ * @param {string | undefined} [props.actionOptions.actionTitle] - The title for the action column.
+ * @param {((id: string) => void) | undefined} [props.actionOptions.actionHandler] - The handler function for the action.
+ * @param {string | undefined} [props.actionOptions.buttonLabel] - The label for the action button.
+ */
 export default function DataTableRow({ dataItem, columnHeaders, actionOptions }: DataRowProps) {
   return (
     <tr

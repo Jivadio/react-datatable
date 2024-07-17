@@ -1,5 +1,13 @@
 import { TableColumnProps } from "./DataTable.types";
 
+/**
+ * DataTableHeader Component
+ * @param {Object} props - Properties passed to the component
+ * @param {string} props.headerTitle - The display name of the column.
+ * @param {string} props.sortKey - The key to be used for sorting.
+ * @param {(order: "asc" | "desc", key: string) => void} props.onSort - The function to handle sorting.
+ * @param {string} props.activeSortKey - The currently active sort key.
+ */
 export default function DataTableHeader({
                                           headerTitle,
                                           sortKey,
